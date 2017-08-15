@@ -1,0 +1,3 @@
+This little demo project is far too tiny to claim any copyright in,
+so consider it as being in the public domain, 
+and use it for whatever you like.
