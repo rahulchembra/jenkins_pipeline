@@ -13,44 +13,58 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
     <build.plugins.plugin.version>1.0.1</build.plugins.plugin.version>
   </properties>
 
+  <!-- Add dependencies here -->
+  <dependencies>
+    <!-- JUnit 4 for testing -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.13.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <build>
+    <!-- Tell Maven to use the 'test' folder for tests -->
+    <testSourceDirectory>${basedir}/test</testSourceDirectory>
+
     <plugins>
+      <!-- Java EE AppServer: WildFly (JBoss) -->
+      <plugin>
+        <groupId>org.wildfly.plugins</groupId>
+        <artifactId>wildfly-maven-plugin</artifactId>
+        <version>1.0.2.Final</version>
+      </plugin>
 
-			<!-- Java EE AppServer: WildFly (JBoss) -->
-			<plugin>
-				<groupId>org.wildfly.plugins</groupId>
-				<artifactId>wildfly-maven-plugin</artifactId>
-				<version>1.0.2.Final</version>
-			</plugin>
+      <!-- Java EE AppServer: GlassFish -->
+      <plugin>
+        <groupId>org.glassfish.maven.plugin</groupId>
+        <artifactId>maven-glassfish-plugin</artifactId>
+        <version>2.1</version>
+      </plugin>
 
-			<!-- Java EE AppServer: GlassFish (see https://maven-glassfish-plugin.java.net/usage.html) -->
-			<plugin>
-				<groupId>org.glassfish.maven.plugin</groupId>
-				<artifactId>maven-glassfish-plugin</artifactId>
-				<version>2.1</version>
-			</plugin>
+      <!-- Java EE AppServer: Apache TomEE -->
+      <plugin>
+        <groupId>org.apache.openejb.maven</groupId>
+        <artifactId>tomee-maven-plugin</artifactId>
+        <version>1.7.1</version>
+        <configuration>
+          <tomeeVersion>1.7.1</tomeeVersion>
+          <tomeeClassifier>plus</tomeeClassifier>
+        </configuration>
+      </plugin>
 
-			<!-- Java EE AppServer: Apache TomEE (see http://tomee.apache.org/tomee-maven-plugin.html) -->
-			<plugin>
-				<groupId>org.apache.openejb.maven</groupId>
-				<artifactId>tomee-maven-plugin</artifactId>
-				<version>1.7.1</version>
-				<configuration>
-					<tomeeVersion>1.7.1</tomeeVersion>
-					<tomeeClassifier>plus</tomeeClassifier>
-				</configuration>
-			</plugin>
-
-			<!-- Java EE Web Container: Apache Tomcat (http://tomcat.apache.org/maven-plugin.html) -->
-			<plugin>
-				<groupId>org.apache.tomcat.maven</groupId>
-				<artifactId>tomcat7-maven-plugin</artifactId>
-				<version>2.2</version>
-			</plugin>
-
+      <!-- Java EE Web Container: Apache Tomcat -->
+      <plugin>
+        <groupId>org.apache.tomcat.maven</groupId>
+        <artifactId>tomcat7-maven-plugin</artifactId>
+        <version>2.2</version>
+      </plugin>
     </plugins>
   </build>
 
