@@ -1,4 +1,6 @@
-CI Pipeline for Java Application
+CI/CD Pipeline for Java Application
+
+
 This repository contains a Continuous Integration (CI) pipeline for building, testing, and packaging a Java application using Jenkins. The pipeline automates various stages from source code validation to packaging and is fully integrated with code quality and coverage tools.
 
 📌 Features
@@ -63,7 +65,7 @@ Generates a code coverage report for executed tests.
 Package
 Packages the Java application into a JAR/WAR file.
 
-Docker Build (Optional)
+Docker Build 
 Builds a Docker image for the application.
 
 📊 Reports & Logs
